@@ -21,5 +21,5 @@ ServerFilter .help or .h (A bot by Arcaner)
 
 "https://krunker.io/?game=" links are converted to info-embeds
 
-[ServerFilter Github repository](https://github.com/Infinitifall/ServerFilter/edit/master/help.txt)
+[ServerFilter Github repository](https://github.com/Infinitifall/ServerFilter)
 ```
