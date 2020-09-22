@@ -1,5 +1,5 @@
 ```fix
-ServerFilter .help or .h (A bot by Arcaner)
+ServerFilter .help or .h (a bot by Arcaner#1213)
 ```
 ```bash
 ".. x y" to show servers filtered by your regions and modes with least x players, at least y empty spots
@@ -20,6 +20,5 @@ ServerFilter .help or .h (A bot by Arcaner)
 ".hi" or ".hello" to greet the bot
 
 "https://krunker.io/?game=" links are converted to info-embeds
-
-[ServerFilter Github repository](https://github.com/Infinitifall/ServerFilter)
 ```
+[ServerFilter Github repository](https://github.com/Infinitifall/ServerFilter)
