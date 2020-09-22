@@ -317,8 +317,6 @@ async def on_ready():
     await client.change_presence(status=discord.Status.dnd)
     # await client.change_presence(status=discord.Status.online, activity=discord.Game("Looking out for .help"))
     print("Changed presence")
-    y = local_files_init()
-    print("Initialized local files. {} new files were created".format(y))
     print("Now ready")
     await mm_run()
 
@@ -453,5 +451,6 @@ async def update_matchmaker_dict():
         matchmaker_dict["servers_online"] += 1
     # print(matchmaker_dict)
 
-
+y = local_files_init()
+print("Initialized local files. {} new files were created".format(y))
 client.run(read_file(local_files["token"]))
