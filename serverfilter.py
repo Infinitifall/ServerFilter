@@ -10,6 +10,8 @@ import os.path
 from requests import get
 from json import loads
 
+import aiohttp
+
 import nest_asyncio
 nest_asyncio.apply()
 
@@ -106,7 +108,7 @@ async def on_message(message):
             mm_temp_dict = dict(matchmaker_dict)
             mm_temp_dict.pop("sp_games")
             mm_temp_dict.pop("names")
-            await send_embed("```fix\nServer Information``` ```Players online: {}\nMaximum player capacity: {}\nServers online: {}```\n```Regions:``` ```fix\n{}```\n```Modes:``` ```fix\n{}```".format(mm_temp_dict["players_online"], mm_temp_dict["players_maximum"], mm_temp_dict["servers_online"], read_set_return_pretty_string(mm_temp_dict["regions"]), read_set_return_pretty_string(mm_temp_dict["modes"])), message.channel)
+            await send_embed("```bash\n\"Server Information\"``` ```Players online: {}\nMaximum player capacity: {}\nServers online: {}```\n```Regions:``` ```fix\n{}```\n```Modes:``` ```fix\n{}```".format(mm_temp_dict["players_online"], mm_temp_dict["players_maximum"], mm_temp_dict["servers_online"], read_set_return_pretty_string(mm_temp_dict["regions"]), read_set_return_pretty_string(mm_temp_dict["modes"])), message.channel)
             return
 
         elif message_string.startswith("r"):
@@ -305,7 +307,7 @@ async def on_message(message):
         if "error" in link_arr:  # wrong link
             return
 
-        v_embed = discord.Embed(color=embed_color, url=message.content, title="{}/{} players on {} ({} region)".format(link_arr[2], link_arr[3], link_arr[4]['i'], link_arr[1]), description="\n{}\nLink posted by {}".format(message.content, message.author.mention))
+        v_embed = discord.Embed(color=0x000000, url=message.content, title="{}/{} players on {} ({} region)".format(link_arr[2], link_arr[3], link_arr[4]['i'], link_arr[1]), description="\n{}\nLink posted by {}".format(message.content, message.author.mention))
         await message.channel.send(embed=v_embed)
         await message.delete()
         return
@@ -388,6 +390,13 @@ def get_decode_load(web_link):
     link_data_decode = link_data.content.decode("utf8")
     link_data_loads = loads(link_data_decode)
     return link_data_loads
+    
+
+async def get_decode_load2(url):
+    timeout = aiohttp.ClientTimeout(total=60)
+    async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(verify_ssl=False)) as session:
+        async with session.get(url, timeout=timeout) as resp:
+            return await resp.text()
 
 
 def read_set_return_pretty_string(my_set):
@@ -409,7 +418,10 @@ async def update_matchmaker_dict():
     matchmaker_dict["names"] = set()
     matchmaker_dict["sp_games"] = {}
 
+    print("one cycle started")
+
     mm_dict_temp = get_decode_load(web_links["matchmaker"])
+
     games = mm_dict_temp["games"]
 
     for game in games:
@@ -449,8 +461,9 @@ async def update_matchmaker_dict():
         matchmaker_dict["players_online"] += p_online
         matchmaker_dict["players_maximum"] += p_max
         matchmaker_dict["servers_online"] += 1
-    # print(matchmaker_dict)
+    print(matchmaker_dict)
 
 y = local_files_init()
 print("Initialized local files. {} new files were created".format(y))
-client.run(read_file(local_files["token"]))
+# client.run(read_file(local_files["token"]))
+client.run('NzAyNTE4MzMzNDEyNjA2MDQ0.XqBNLg.n8AYcb9hrfOUOjWDQPdDGo11gRk')
