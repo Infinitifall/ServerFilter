@@ -418,8 +418,6 @@ async def update_matchmaker_dict():
     matchmaker_dict["names"] = set()
     matchmaker_dict["sp_games"] = {}
 
-    print("one cycle started")
-
     mm_dict_temp = get_decode_load(web_links["matchmaker"])
 
     games = mm_dict_temp["games"]
@@ -461,7 +459,7 @@ async def update_matchmaker_dict():
         matchmaker_dict["players_online"] += p_online
         matchmaker_dict["players_maximum"] += p_max
         matchmaker_dict["servers_online"] += 1
-    print(matchmaker_dict)
+    # print(matchmaker_dict)
 
 y = local_files_init()
 print("Initialized local files. {} new files were created".format(y))
