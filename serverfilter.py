@@ -465,5 +465,4 @@ async def update_matchmaker_dict():
 
 y = local_files_init()
 print("Initialized local files. {} new files were created".format(y))
-# client.run(read_file(local_files["token"]))
-client.run('NzAyNTE4MzMzNDEyNjA2MDQ0.XqBNLg.n8AYcb9hrfOUOjWDQPdDGo11gRk')
+client.run(read_file(local_files["token"]))
