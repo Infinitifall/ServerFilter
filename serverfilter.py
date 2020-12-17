@@ -18,7 +18,7 @@ nest_asyncio.apply()
 client = Bot('')
 
 verified_server_ids_set = {730755297831813180}  # bot will only work in these servers. It will record everything it can read from any unauthorized servers to logs2.txt
-bot_channel_ids_set = {757842201207242822}  # while the bot will try to convert links to embeds in all channels of verified servers, only in these channels will it actively look for commands and try to respond to them
+bot_channel_ids_set = {732551037612851291}  # while the bot will try to convert links to embeds in all channels of verified servers, only in these channels will it actively look for commands and try to respond to them
 admin_user_ids_set = {387961214011047937}  # only admins can do the toggle command
 mm = 1
 
